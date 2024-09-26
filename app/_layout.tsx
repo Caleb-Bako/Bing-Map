@@ -1,37 +1,38 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
+import { AuthProvider, useAuth } from '@/provider/AuthProvider';
+import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+// Makes sure the user is authenticated before accessing protected pages
+const InitialLayout = () => {
+  const { session, initialized } = useAuth();
+  const segments = useSegments();
+  const router = useRouter();
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    if (!initialized) return;
+
+    // Check if the path/url is in the (auth) group
+    const inAuthGroup = segments[0] === '(screens)';
+
+    if (session && !inAuthGroup) {
+      // Redirect authenticated users to the list page
+       setTimeout(()=> router.replace('/HomeScreen'),2500)
+    } else if (!session) {
+      // Redirect unauthenticated users to the login page
+      router.replace('/');
     }
-  }, [loaded]);
+  }, [session, initialized]);
 
-  if (!loaded) {
-    return null;
-  }
+  return <Slot />;
+};
 
+// Wrap the app with the AuthProvider
+const RootLayout = () => {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <AuthProvider>
+      <InitialLayout />
+    </AuthProvider>
   );
-}
+};
+
+export default RootLayout;

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetBackdrop} from '@gorhom/bottom-sheet';
 import SearchOverlay from '../app/(screens)/PlacesPage';
+import MapScreen from '@/app/(screens)/Map';
 
 export default function BottomSection() {
   const [currentIndex, setCurrentIndex] = useState(0); 
@@ -23,6 +24,7 @@ export default function BottomSection() {
     );
     return (
       <View style={styles.container}>
+        <MapScreen/>
         <BottomSheet
           ref={bottomSheetRef}
           onChange={handleSheetChanges}
@@ -39,11 +41,11 @@ export default function BottomSection() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 24,
-      backgroundColor: 'grey',
+      // padding: 24,
+      // backgroundColor: 'grey',
     },
     contentContainer: {
       flex: 1,
-      alignItems: 'center',
+    //   alignItems: 'center',
     },
   });

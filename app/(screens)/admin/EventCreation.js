@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Entypo from '@expo/vector-icons/Entypo';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -8,6 +8,11 @@ const EventCreation = () => {
   const [name,setName] = useState('');
   const [location,setLocation] = useState('');
   const [focusState, setFocusState] = useState({ firstInput: false, anotherInput: false });
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
+  const colors = ['red', 'blue', 'green', 'yellow','pink','orange','purple'];
+  const eventTypes = ['Public', 'Ticket', 'Department'];
 
   const handleFocus = (inputName) => {
     setFocusState({ ...focusState, [inputName]: true });
@@ -65,23 +70,46 @@ const EventCreation = () => {
       <View style={styles.input}>
         <Text style={styles.text}>Event Type</Text>
         <View style={styles.event}>
-          <Text style={styles.eventtext}>Public</Text>
-          <Text style={styles.eventtext}>Ticket</Text>
-          <Text style={styles.eventtext}>Department</Text>
+          {eventTypes.map((type, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => setSelectedEvent(type)}
+              style={[
+                styles.eventtext,
+                selectedEvent === type && { backgroundColor: 'black', borderColor: 'black' }
+              ]}
+            >
+              <Text
+                style={{
+                  color: selectedEvent === type ? 'white' : 'black',
+                }}
+              >
+                {type}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
       </View>
       <View style={styles.input}>
         <Text style={styles.text}>Pick Color for Event Maker</Text>
-        <View style={styles.marker}>
-          <View style={{backgroundColor:'red',borderRadius:50, width: 40, height: 40,  justifyContent: 'center', alignItems: 'center' }}>
-            <Entypo name="check" size={20} color="#ffff" />
-          </View>
-          <View style={{backgroundColor:'purple',borderRadius:50, width: 40, height: 40}}/>
-          <View style={{backgroundColor:'green',borderRadius:50, width: 40, height: 40}}/>
-          <View style={{backgroundColor:'blue',borderRadius:50, width: 40, height: 40}}/>
-          <View style={{backgroundColor:'pink',borderRadius:50, width: 40, height: 40}}/>
-          <View style={{backgroundColor:'orange',borderRadius:50, width: 40, height: 40}}/>
-          <View style={{backgroundColor:'brown',borderRadius:50, width: 40, height: 40}}/>
+        <View style={{ flexDirection: 'row', gap: 15 }}>
+          {colors.map((color, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => setSelectedColor(color)}
+              style={{
+                backgroundColor: color,
+                borderRadius: 50,
+                width: 40,
+                height: 40,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              {selectedColor === color && (
+                <Entypo name="check" size={20} color="#fff" />
+              )}
+            </TouchableOpacity>
+          ))}
         </View>
       </View>
     </View>

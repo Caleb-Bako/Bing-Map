@@ -62,7 +62,7 @@ const DateandTimePicker = () => {
       <View style={styles.date}>
         <View>
           <Text style={styles.text}>Start Time</Text>
-          <View  style={styles.container}>
+          <View  style={styles.timecontainer}>
             <Text>{startTime.toLocaleTimeString()}</Text>
             <Pressable onPress={() => showMode('time', 'startTime')}>
                 <AntDesign name="clockcircleo" size={24} color="#fbbf24" />
@@ -71,7 +71,7 @@ const DateandTimePicker = () => {
         </View>
         <View>
           <Text style={styles.text}>End Time</Text>
-          <View style={styles.container}>
+          <View style={styles.timecontainer}>
             <Text>{endTime.toLocaleTimeString()}</Text>
             <Pressable onPress={() => showMode('time', 'endTime')}>
                 <AntDesign name="clockcircleo" size={24} color="#fbbf24" />
@@ -116,7 +116,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'row',
-    gap:50,
+    gap:45,
+    alignItems: 'center',
+    borderBottomWidth: 1, 
+    borderBottomColor: '#d3d3d3', 
+  },
+  timecontainer: {
+    flexDirection: 'row',
+    gap:32,
     alignItems: 'center',
     borderBottomWidth: 1, 
     borderBottomColor: '#d3d3d3', 

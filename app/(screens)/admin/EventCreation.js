@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Entypo from '@expo/vector-icons/Entypo';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -7,6 +7,7 @@ import DateandTimePicker from '@/components/DateandTimePicker';
 const EventCreation = () => {
   const [name,setName] = useState('');
   const [location,setLocation] = useState('');
+  const [description,setDescription] = useState('');
   const [focusState, setFocusState] = useState({ firstInput: false, anotherInput: false });
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -23,6 +24,9 @@ const EventCreation = () => {
   };
   return (
     <View style={styles.container}>
+    <ScrollView 
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 50 }}>
       <View style={styles.input}>
         <Text style={styles.text}>Event Name</Text>
           <View style={[
@@ -91,8 +95,27 @@ const EventCreation = () => {
         </View>
       </View>
       <View style={styles.input}>
+      <Text style={styles.text}>Description</Text>
+        <View style={[
+            styles.inputWrapper, 
+            { borderBottomColor: focusState.anotherInput ? 'black' : '#d3d3d3' }
+          ]}>
+          <TextInput
+            autoCapitalize="none"
+            placeholder="e.g. Come one and all to Revival for the most life changing moment in your life"
+            value={description}
+            onChangeText={setDescription}
+            onFocus={() => handleFocus('anotherInput')}
+            onBlur={() => handleBlur('anotherInput')}
+            multiline={true}
+            textAlignVertical="top"
+            style={styles.textarea}
+          />
+        </View>
+      </View>
+      <View style={styles.input}>
         <Text style={styles.text}>Pick Color for Event Maker</Text>
-        <View style={{ flexDirection: 'row', gap: 15 }}>
+        <View style={{ flexDirection: 'row', gap: 15 ,paddingTop: 12}}>
           {colors.map((color, index) => (
             <TouchableOpacity
               key={index}
@@ -112,6 +135,7 @@ const EventCreation = () => {
           ))}
         </View>
       </View>
+    </ScrollView>
     </View>
   )
 }
@@ -140,11 +164,18 @@ const styles = StyleSheet.create({
   },
   inputField: {
     flex: 1, 
-    fontSize: 16,
     paddingVertical: 10,
     borderColor: 'black',
     fontSize:20,
     fontWeight:'bold' 
+  },
+  textarea:{
+    flex: 1, 
+    borderColor: 'black',
+    paddingVertical: 10, 
+    paddingHorizontal: 5, 
+    flex: 1,
+    textAlignVertical: 'top',
   },
   event:{
     flexDirection:'row',
@@ -159,9 +190,4 @@ const styles = StyleSheet.create({
     paddingVertical:8,
     borderRadius:20
   },
-  marker:{
-    paddingTop: 12,
-    flexDirection:'row',
-    gap:15
-  }
 })

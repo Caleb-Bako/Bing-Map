@@ -13,6 +13,8 @@ export default function RootLayout() {
         <Stack.Screen name="PlacesPage"/>
         <Stack.Screen name="Places"/>
         <Stack.Screen name="[placeId]"/>
+        <Stack.Screen name="admin/Admin"/>
+        <Stack.Screen name="admin/EventCreation"/>
       </Stack>
     </GestureHandlerRootView>
   );

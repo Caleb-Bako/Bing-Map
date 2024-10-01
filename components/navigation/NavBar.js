@@ -2,7 +2,7 @@ import { View, Image, Pressable } from 'react-native';
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-// import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
 export default function NavBar() {
   const navBarStyles = {
@@ -13,10 +13,10 @@ export default function NavBar() {
     paddingTop: 40,
     backgroundColor: '#f0f0f0',
   };
-
+  const router = useRouter();
   return (
     <View style={navBarStyles}>
-      <Pressable>
+      <Pressable onPress={()=> router.navigate('/admin/Admin')}>
         <Image 
             source={require('../../assets/images/Avatar-Profile-PNG-Image-File.png')} 
             style={{height:hp(5), width:hp(5.5)}}

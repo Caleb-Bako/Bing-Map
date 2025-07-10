@@ -1,50 +1,49 @@
-# Welcome to your Expo app 👋
+# Bingmap 🗺️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Bingmap** is an interactive campus navigation app designed to help students find their way around the school with ease. It provides categorized landmark data (e.g., classes, labs, restaurants), includes image previews and descriptions, and allows user-driven updates to landmark names — all powered by custom logic and backend moderation.
 
-## Get started
+🚧 **Note**: Backend moderation tools and voting features are under continuous development.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Features 🚀
 
-2. Start the app
+- **Landmark Navigation**:  
+  Find key campus spots like lecture halls, labs, libraries, eateries, and more.
 
-   ```bash
-    npx expo start
-   ```
+- **Categorized Information**:  
+  Landmarks are grouped into types (e.g., Classes, Labs, Restaurants) for easy filtering.
 
-In the output, you'll find options to open the app in a
+- **Landmark Images and Info**:  
+  Users can view pictures and helpful details for each location.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Dynamic Name Updates**:  
+  Users can suggest new names for landmarks. These are filtered by a logic system + vote count and require backend approval.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **User Involvement in Map Updates**:  
+  Keeps the app community-driven while retaining backend control to ensure accuracy.
 
-## Get a fresh project
+- **Voting System for Name Changes**:  
+   Allow users to vote on landmark name suggestions.
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## Tech Stack 💻
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Frontend**: React Native  
+- **Database**: SupaBase  
+- **Map System**: Google Maps API  
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## Future Plans 🌟
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+[] Backend Moderation Dashboard:  
+Manage suggestions, view stats, and approve community updates.
 
-## Join the community
+[] Offline Mode:  
+Enable map usage even without internet.
 
-Join our community of developers creating universal apps.
+[] Admin Tools:  
+Batch import landmarks and manage categories directly.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

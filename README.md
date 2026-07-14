@@ -67,7 +67,8 @@ npm install
 # Start the Expo development server
 npx expo start
 ```
-<img width="205" height="453" alt="Screenshot 2024-05-27 060018" src="https://github.com/user-attachments/assets/6722fce4-24a7-4c63-ae7a-0f5d70970f44" /> <img width="206" height="449" alt="Screenshot 2024-05-27 073613" src="https://github.com/user-attachments/assets/324fb3de-5f05-4d0a-b822-7ad51fbf1897" /><img width="206" height="437" alt="Screenshot 2024-05-27 080610" src="https://github.com/user-attachments/assets/926f184e-0372-4115-ad9c-dfae98adeb4b" />
+<img width="205" height="453" alt="Screenshot 2024-05-27 060018" src="https://github.com/user-attachments/assets/6722fce4-24a7-4c63-ae7a-0f5d70970f44" /> <img width="206" height="449" alt="Screenshot 2024-05-27 073613" src="https://github.com/user-attachments/assets/324fb3de-5f05-4d0a-b822-7ad51fbf1897" /><img width="206" height="437" alt="Screenshot 2024-05-27 080610" src="https://github.com/user-attachments/assets/926f184e-0372-4115-ad9c-dfae98adeb4b" /> <img width="205" height="437" alt="Screenshot 2024-05-27 081242" src="https://github.com/user-attachments/assets/842d44e3-c620-4a52-ae76-c7b4e62ff8b7" />
+
 
 
 Once the Metro bundler starts, scan the QR code with the Expo Go app (or your device's camera on iOS) to load the app on your phone. Browse landmarks by category, view images and details, and try suggesting a name update!
